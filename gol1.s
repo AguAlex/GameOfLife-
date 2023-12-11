@@ -356,7 +356,12 @@ evolutie:
 .global main
 main:
     call citire  
-    
+    call afisare_matrice
+    mov $4, %eax
+    mov $1, %ebx
+    mov $newL,  %ecx
+    mov $2, %edx
+    int $0x80
     movl $0, indexE
     for_ev:
         movl indexE, %eax
@@ -365,14 +370,18 @@ main:
 
         call evolutie
         call newMatrix
-        
+        call afisare_matrice
+        mov $4, %eax
+        mov $1, %ebx
+        mov $newL,  %ecx
+        mov $2, %edx
+        int $0x80
 
 
         incl indexE
         jmp for_ev
     exit_for_ev:
       
-    call afisare_matrice
    
 et_exit:
 
